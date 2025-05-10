@@ -4,7 +4,7 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 `tbl2.tsv`. En este laboratorio solo puede utilizar las funciones y 
 librerias de pandas para resolver las preguntas.
 """
-
+import pandas as pd
 
 def pregunta_06():
     """
@@ -15,3 +15,18 @@ def pregunta_06():
     ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 
     """
+    data = pd.read_csv(
+    "./files/input/tbl1.tsv",
+    sep="\t",
+    )
+    
+    data = data.copy()
+    data["c4"] = data["c4"].str.upper()
+    unicos = data["c4"].unique()
+    unicos = sorted(unicos)
+    
+    return unicos
+
+
+if __name__ == "__main__":
+    print(pregunta_06())

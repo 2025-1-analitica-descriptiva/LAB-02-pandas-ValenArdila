@@ -4,7 +4,7 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 `tbl2.tsv`. En este laboratorio solo puede utilizar las funciones y 
 librerias de pandas para resolver las preguntas.
 """
-
+import pandas as pd
 
 def pregunta_03():
     """
@@ -21,3 +21,17 @@ def pregunta_03():
     Name: count, dtype: int64
 
     """
+    data = pd.read_csv(
+    "./files/input/tbl0.tsv",
+    sep="\t",
+    )
+    
+    data = data.copy()
+    frecuencia = data["c1"].value_counts()
+    resultado = frecuencia.sort_index()
+    
+    return resultado
+
+
+if __name__ == "__main__":
+    print(pregunta_03())
